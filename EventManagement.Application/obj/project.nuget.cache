@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Yj6xvaey3BU=",
+  "success": true,
+  "projectFilePath": "E:\\Fullstack\\projects\\EventManagementApi\\EventManagement.Api\\EventManagement.Application\\EventManagement.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Shrouk\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

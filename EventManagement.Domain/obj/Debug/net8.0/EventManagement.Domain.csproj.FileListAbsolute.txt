@@ -1,0 +1,11 @@
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\bin\Debug\net8.0\EventManagement.Domain.deps.json
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\bin\Debug\net8.0\EventManagement.Domain.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\bin\Debug\net8.0\EventManagement.Domain.pdb
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\EventManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\EventManagement.Domain.AssemblyInfoInputs.cache
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\EventManagement.Domain.AssemblyInfo.cs
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\EventManagement.Domain.csproj.CoreCompileInputs.cache
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\EventManagement.Domain.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\refint\EventManagement.Domain.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\EventManagement.Domain.pdb
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Domain\obj\Debug\net8.0\ref\EventManagement.Domain.dll

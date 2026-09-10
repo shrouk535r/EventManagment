@@ -1,0 +1,15 @@
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\bin\Debug\net8.0\EventManagement.Application.deps.json
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\bin\Debug\net8.0\EventManagement.Application.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\bin\Debug\net8.0\EventManagement.Application.pdb
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\bin\Debug\net8.0\EventManagement.Domain.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\bin\Debug\net8.0\EventManagement.Domain.pdb
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.csproj.AssemblyReference.cache
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.AssemblyInfoInputs.cache
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.AssemblyInfo.cs
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.csproj.CoreCompileInputs.cache
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventMan.37F6A844.Up2Date
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\refint\EventManagement.Application.dll
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\EventManagement.Application.pdb
+E:\Fullstack\projects\EventManagementApi\EventManagement.Api\EventManagement.Application\obj\Debug\net8.0\ref\EventManagement.Application.dll
