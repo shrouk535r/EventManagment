@@ -1,4 +1,4 @@
-﻿using EventManagement.Application.Interfaces.Repositories;
+﻿using EventManagement.Domain.Interfaces.Repositories;
 using EventManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,23 +16,23 @@ namespace EventManagement.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Domain.Entities.Task>> GetByProject(Guid ProjectId)
+        public async Task<IEnumerable<Domain.Entities.Tasks.Task>> GetByProject(Guid ProjectId)
         {
             return await _context.Tasks.Where(T => T.ProjectId == ProjectId).ToListAsync();
         }
-        public async Task<Domain.Entities.Task?> GetById(Guid TaskId)
+        public async Task<Domain.Entities.Tasks.Task?> GetById(Guid TaskId)
         {
             return await _context.Tasks.FirstOrDefaultAsync(T => T.Id == TaskId);
         }
-        public async Task Add(Domain.Entities.Task task)
+        public async Task Add(Domain.Entities.Tasks.Task task)
         {
             await _context.Tasks.AddAsync(task);
         }
-        public void Update(Domain.Entities.Task task)
+        public void Update(Domain.Entities.Tasks.Task task)
         {
             _context.Tasks.Update(task);
         }
-        public void Delete(Domain.Entities.Task task)
+        public void Delete(Domain.Entities.Tasks.Task task)
         {
             _context.Tasks.Remove(task);
         }

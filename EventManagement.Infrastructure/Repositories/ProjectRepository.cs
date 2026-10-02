@@ -1,5 +1,5 @@
-﻿using EventManagement.Application.Interfaces.Repositories;
-using EventManagement.Domain.Entities;
+﻿using EventManagement.Domain.Interfaces.Repositories;
+using EventManagement.Domain.Entities.Projects;
 using EventManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,15 +20,15 @@ namespace EventManagement.Infrastructure.Repositories
         }
         public async Task<IEnumerable<Project>> GetAll()
         {
-            return await _context.Projects.ToListAsync();
+            return await _context.Projects.Include(P => P.User).ToListAsync();
         }
-        public async Task<IEnumerable<Project>?> GetbyUser(string UserName)
+        public async Task<IEnumerable<Project>?> GetbyUser(Guid UserId)
         {
-            return await _context.Projects.Where(p => p.UserName == UserName).ToListAsync();
+            return await _context.Projects.Include(P => P.User).Include(P => P.Tasks).Where(p => p.UserId == UserId).ToListAsync();
         }
         public async Task<Project?> GetById(Guid ProjectId)
         {
-            return await _context.Projects.FirstOrDefaultAsync(P => P.Id == ProjectId);
+            return await _context.Projects.Include(P => P.User).Include(P => P.Tasks).FirstOrDefaultAsync(P => P.Id == ProjectId);
         }
         public async Task Add(Project project)
         {

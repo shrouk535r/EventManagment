@@ -1,7 +1,9 @@
-﻿using EventManagement.Application.Interfaces.Repositories;
-using EventManagement.Application.Interfaces.UOW;
+﻿
+using EventManagement.Domain.Interfaces.Repositories;
+using EventManagement.Domain.Interfaces.UOW;
 using EventManagement.Infrastructure.Data;
 using EventManagement.Infrastructure.Repositories;
+using EventManagement.Infrastructure.UOW;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +26,7 @@ namespace EventManagement.Infrastructure
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IUnitOfWork, IUnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             return services;
         }

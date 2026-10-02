@@ -1,4 +1,4 @@
-﻿using EventManagement.Application.Interfaces.UOW;
+﻿using EventManagement.Domain.Interfaces.UOW;
 using EventManagement.Infrastructure.Data;
 using System;
 using System.Collections.Generic;

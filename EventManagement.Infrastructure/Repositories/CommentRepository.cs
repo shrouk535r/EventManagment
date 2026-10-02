@@ -1,5 +1,5 @@
-﻿using EventManagement.Application.Interfaces.Repositories;
-using EventManagement.Domain.Entities;
+﻿using EventManagement.Domain.Interfaces.Repositories;
+using EventManagement.Domain.Entities.Comments;
 using EventManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -7,11 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\EventManagement.Domain\EventManagement.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Comments\" />
+    <Folder Include="Features\Projects\Commands\CreateProject\" />
+    <Folder Include="Features\Projects\Commands\DeleteProject\" />
+    <Folder Include="Features\Projects\Commands\UpdateProject\" />
+    <Folder Include="Features\Projects\Queries\GetProjects\" />
+    <Folder Include="Features\Projects\Queries\GetProjectById\" />
+    <Folder Include="Features\Tasks\Commands\CreateTask\" />
+    <Folder Include="Features\Tasks\Commands\DeleteTask\" />
+    <Folder Include="Features\Tasks\Commands\UpdateTask\" />
+    <Folder Include="Features\Tasks\Queries\GetTasks\" />
+    <Folder Include="Features\Tasks\Queries\GetTaskById\" />
+    <Folder Include="Validators\" />
   </ItemGroup>
 
 </Project>

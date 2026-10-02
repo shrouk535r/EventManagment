@@ -1,4 +1,5 @@
-﻿using EventManagement.Application;
+﻿using EventManagement.Api.Excepitions;
+using EventManagement.Application;
 using EventManagement.Infrastructure;
 
 namespace EventManagement.Api
@@ -7,6 +8,8 @@ namespace EventManagement.Api
     {
         public static IServiceCollection AddApiDI(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddProblemDetails();
+            services.AddExceptionHandler<GlobalExcepitionHandler>();
             services.AddApplicationDI()
                 .AddInfrastructureDI(configuration);
             return services;
