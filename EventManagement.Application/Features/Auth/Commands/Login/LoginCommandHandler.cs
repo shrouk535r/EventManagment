@@ -28,9 +28,9 @@ namespace EventManagement.Application.Features.Auth.Commands.Login
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
             if (user == null)
-                throw new UnauthorizedException("Invalid email or password");
+                throw new BadRequestException("Invalid email or password");
             if (!await _userManager.CheckPasswordAsync(user, request.Password))
-                throw new UnauthorizedException("Invalid email or password");
+                throw new BadRequestException("Invalid email or password");
             var token = _jWTService.GenerateToken(user);
             return new LoginResponseDTO(token, user.Role, user.Id);
         }

@@ -61,11 +61,11 @@ namespace EventManagement.Api.Excepitions
                     Detail = ex.Message,
                     Status = ex.SatusCode
                 },
-                _ =>
+                Exception ex =>
                  new ProblemDetails
                  {
                      Title = "Server Error!",
-                     Detail = "An unexpected error occurred.",
+                     Detail =ex.Message ,
                      Status = StatusCodes.Status500InternalServerError
                  },
             };

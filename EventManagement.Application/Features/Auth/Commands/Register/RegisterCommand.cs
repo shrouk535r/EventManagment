@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Auth.Commands.Register
 {
-    public sealed record RegisterCommand(string Name, string Email, string Password, string City, UserRole Role) :IRequest<Guid>
+    public sealed record RegisterCommand(string Name, string Email, string Password, string City, UserRole Role) :IRequest<Guid>;
 }

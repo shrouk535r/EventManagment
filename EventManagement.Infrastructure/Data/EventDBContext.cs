@@ -2,6 +2,8 @@
 using EventManagement.Domain.Entities.Comments;
 using EventManagement.Domain.Entities.Projects;
 using EventManagement.Domain.Entities.Users;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,9 +13,9 @@ using Task = EventManagement.Domain.Entities.Tasks.Task;
 
 namespace EventManagement.Infrastructure.Data
 {
-    public class EventDBContext : DbContext
+    public class EventDBContext : IdentityDbContext<User,IdentityRole<Guid>,Guid>
     {
-        public EventDBContext(DbContextOptions options) : base(options)
+        public EventDBContext(DbContextOptions<EventDBContext> options) : base(options)
         { }
         public DbSet<User> Users { get; set; }
 

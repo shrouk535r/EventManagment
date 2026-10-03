@@ -17,5 +17,4 @@ namespace EventManagement.Application.Features.Tasks.Commands.CreateTask
             RuleFor(T => T.TaskPriority).IsInEnum().WithMessage("Invalid Task priority");
         }
     }
-    }
 }

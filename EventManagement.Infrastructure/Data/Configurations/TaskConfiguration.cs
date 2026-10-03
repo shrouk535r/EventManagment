@@ -11,8 +11,10 @@ namespace EventManagement.Infrastructure.Data.Configurations
         {
             builder.HasKey(t => t.Id);
             builder.Property(t => t.Title).HasMaxLength(200).IsRequired();            
-            builder.HasOne(t => t.Project).WithMany(p => p.Tasks).HasForeignKey(t => t.ProjectId);
-            builder.HasMany(t => t.Comments).WithOne(c => c.Task).HasForeignKey(c => c.TaskId);
+            builder.HasOne(t => t.Project).WithMany(p => p.Tasks).HasForeignKey(t => t.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(t => t.Comments).WithOne(c => c.Task).HasForeignKey(c => c.TaskId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

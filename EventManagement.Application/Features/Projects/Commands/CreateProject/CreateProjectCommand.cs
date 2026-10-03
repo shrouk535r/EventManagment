@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Projects.Commands.CreateProject
 {
-    public sealed record CreateProjectCommand(string Name, string Description, string UserId):IRequest<Guid>
+    public sealed record CreateProjectCommand(string Name, string Description, Guid UserId):IRequest<Guid>;
 }

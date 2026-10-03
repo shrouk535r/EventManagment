@@ -13,10 +13,9 @@ namespace EventManagement.Infrastructure.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.Property(u => u.Name).IsRequired().HasMaxLength(50);
-            builder.Property(u => u.City).HasMaxLength(200);
-            builder.HasMany(u => u.Projects).WithOne(p => p.User).HasForeignKey(p => p.UserId);
-            builder.HasMany(u => u.Comments).WithOne(c => c.User).HasForeignKey(c => c.UserId);
+            builder.Property(u => u.Name).IsRequired().HasMaxLength(200);
+            builder.HasMany(u => u.Projects).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(u => u.Comments).WithOne(c => c.User).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.NoAction);
 
         }
     }

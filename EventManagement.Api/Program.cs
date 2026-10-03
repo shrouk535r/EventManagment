@@ -1,9 +1,12 @@
+using EventManagement.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace EventManagement.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,16 @@ namespace EventManagement.Api
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var db = services.GetRequiredService<EventDBContext>();
+                db.Database.Migrate();
+                await SeedRoles.SeedUserRoles(services);
+
+            }
+
+            app.UseExceptionHandler();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -27,7 +40,7 @@ namespace EventManagement.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseAuthorization();
 
             app.MapControllers();
 

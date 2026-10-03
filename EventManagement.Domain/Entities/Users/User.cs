@@ -12,7 +12,7 @@ namespace EventManagement.Domain.Entities.Users
     public class User:IdentityUser<Guid>
     {
         public string Name {  get; set; }
-        public String City { get; set; }
+        public string City { get; set; }
         public UserRole Role { get; set; }
         public ICollection<Project> ? Projects { get; set; }
         public ICollection<Comment> ? Comments { get; set; }

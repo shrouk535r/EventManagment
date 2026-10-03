@@ -1,6 +1,10 @@
 ﻿using EventManagement.Application.Behaviors;
+using EventManagement.Application.Features.Auth.Services;
+using EventManagement.Application.Features.Auth.Services.Interfaces;
+using EventManagement.Domain.Entities.Users;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
@@ -16,10 +20,17 @@ namespace EventManagement.Application
     {
         public static IServiceCollection AddApplicationDI(this IServiceCollection services)
         {
-            // Specify the assembly explicitly to resolve ambiguity
+
+
+            // Add MediatR services
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddScoped<IJWTService, JWTService>();
+            // Add FluentValidation services
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            // Add pipeline behavior for validation
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
             return services;
         }
     }

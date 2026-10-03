@@ -24,17 +24,32 @@ namespace EventManagement.Application.Features.Auth.Commands.Register
 
         public async Task<Guid> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            if (_userManager.FindByEmailAsync(request.Email) != null)
+            if ((await _userManager.FindByEmailAsync(request.Email)) != null)
                 throw new ConflictException("Email Already Exist");
             var user = new User
             {
+                UserName=request.Email,
                 Name = request.Name,
                 Email = request.Email,
                 Role = request.Role,
                 City = request.City
             };
-            await _userManager.CreateAsync(user, request.Password);
-            await _userManager.AddToRoleAsync(user, request.Role.ToString());
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if(!result.Succeeded)
+            {
+                var errors = string.Join(
+                ", ",
+                result.Errors.Select(e => e.Description));
+                throw new BadRequestException(errors);
+            }
+            var roleResult = await _userManager.AddToRoleAsync(user, request.Role.ToString());
+            if (!roleResult.Succeeded)
+            {
+                var errors = string.Join(
+                ", ",
+                roleResult.Errors.Select(e => e.Description));
+                throw new BadRequestException(errors);
+            }
             await _unitOfWork.Save();
             return user.Id; 
         }

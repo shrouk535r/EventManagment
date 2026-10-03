@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Auth.Commands.Login
 {
-    public sealed record LoginResponseDTO(string Token, UserRole Role, Guid UserId)
+    public sealed record LoginResponseDTO(string Token, UserRole Role, Guid UserId);
 }

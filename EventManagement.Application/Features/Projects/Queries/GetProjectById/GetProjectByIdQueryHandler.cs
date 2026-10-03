@@ -26,7 +26,8 @@ namespace EventManagement.Application.Features.Projects.Queries.GetProjectById
             if (project == null)
                 throw new NotFoundException(nameof(Project), request.id);
             return new ProjectDetailsDto(project.Name, project.Description, project.Completed, project.User.Name
-                , project.Tasks.Select(t => t.Title).ToList());
+                , project.Tasks?.Select(t => t.Title).ToList() ?? new List<string>());
+
         }
     }
 }
