@@ -1,0 +1,11 @@
+﻿using TaskManagement.Domain.Entities.Users;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TaskManagement.Application.Features.Auth.Commands.Login
+{
+    public sealed record LoginResponseDTO(string Token, string Role, Guid UserId);
+}
