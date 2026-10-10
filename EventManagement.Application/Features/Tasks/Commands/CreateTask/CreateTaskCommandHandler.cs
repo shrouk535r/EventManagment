@@ -28,6 +28,13 @@ namespace EventManagement.Application.Features.Tasks.Commands.CreateTask
             var project = await _projectRepository.GetById(request.ProjectId);
             if (project == null)
                 throw new NotFoundException(nameof(Project), request.ProjectId);
+            if (!Guid.TryParse(request.userId, out var userId))
+                throw new ConflictException("id cannot convert to Guid");
+
+            if (project.UserId != userId)
+                throw new ForbiddenException("Create this Task, Owner of Project only can create it");
+
+
             var newtask = new Domain.Entities.Tasks.Task
             {
                 Title = request.Title,

@@ -15,7 +15,7 @@ using System.Security.Claims;
 
 namespace EventManagement.Api.Controllers
 {
-    [Authorize(Roles = "Member")]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ProjectController(IMediator mediator) : ControllerBase
@@ -42,13 +42,13 @@ namespace EventManagement.Api.Controllers
             return result is null ? NotFound() : Ok(result);
 
         }
-
+        [Authorize]
         // POST api/<ProjectController>
         [HttpPost("CreateProject")]
         public async Task<IActionResult> create(CreateProjectRequest request)
         {
-            if (!Guid.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var userId))
-                return Conflict("id cannot convert to GUID");
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            
             var command = new CreateProjectCommand(request.Name, request.Description, userId);
             var result = await mediator.Send(command);
             return Ok(new
@@ -60,10 +60,13 @@ namespace EventManagement.Api.Controllers
         }
 
         // PUT api/<ProjectController>/5
+        [Authorize]
         [HttpPut("UpdateProject/{id}")]
         public async Task<IActionResult> UpdateProject(Guid id, UpdateProjectRequest request)
         {
-            var command = new UpdateProjectCommand(id, request.Name, request.Description, request.IsCompleted);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var command = new UpdateProjectCommand(id, request.Name, request.Description, request.IsCompleted,userId);
             var result = await mediator.Send(command);
             return Ok(new
             {
@@ -74,9 +77,11 @@ namespace EventManagement.Api.Controllers
         }
 
         // DELETE api/<ProjectController>/5
+        [Authorize(Roles = "Admin")]
         [HttpDelete("DeleteProject/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
+
             var command = new DeleteProjectCommand(id);
             var result = await mediator.Send(command);
             return Ok("Project Deleted Successfully!");

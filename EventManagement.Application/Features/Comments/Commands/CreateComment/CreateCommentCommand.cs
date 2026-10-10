@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Comments.Commands.CreateComment
 {
-    public sealed record CreateCommentCommand(string Content,Guid TaskId,Guid UserId):IRequest<Guid>;
+    public sealed record CreateCommentCommand(string Content,Guid TaskId,string UserId):IRequest<Guid>;
 }

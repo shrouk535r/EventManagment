@@ -32,7 +32,7 @@ namespace EventManagement.Application.Features.Auth.Commands.Login
             if (!await _userManager.CheckPasswordAsync(user, request.Password))
                 throw new BadRequestException("Invalid email or password");
             var token = _jWTService.GenerateToken(user);
-            return new LoginResponseDTO(token, user.Role, user.Id);
+            return new LoginResponseDTO(token, user.Role.ToString(), user.Id);
         }
     }
 }

@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Tasks.Commands.CreateTask
 {
-    public sealed record CreateTaskCommand(string Title, string Description, TaskPriority TaskPriority, DateOnly DueDate,Guid ProjectId)
+    public sealed record CreateTaskCommand(string Title, string Description, TaskPriority TaskPriority, DateOnly DueDate,Guid ProjectId,string userId)
      : IRequest<Guid>;
 }

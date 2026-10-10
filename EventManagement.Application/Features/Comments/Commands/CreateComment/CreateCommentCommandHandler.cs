@@ -1,5 +1,6 @@
 ﻿using EventManagement.Application.Excepitions;
 using EventManagement.Domain.Entities.Comments;
+using EventManagement.Domain.Entities.Projects;
 using EventManagement.Domain.Interfaces.Repositories;
 using EventManagement.Domain.Interfaces.UOW;
 using MediatR;
@@ -28,10 +29,14 @@ namespace EventManagement.Application.Features.Comments.Commands.CreateComment
             var task = await _taskRepository.GetById(request.TaskId);
             if (task == null)
                 throw new NotFoundException(nameof(Domain.Entities.Tasks.Task), request.TaskId);
+            if (!Guid.TryParse(request.UserId, out var userId))
+                throw new ConflictException("id cannot convert to Guid");
+
+         
             var comment = new Comment
             {
                 Content = request.Content,
-                UserId = request.UserId,
+                UserId = userId,
                 TaskId = request.TaskId
             };
             await _commentRepository.Add(comment);

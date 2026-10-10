@@ -18,9 +18,10 @@ namespace EventManagement.Infrastructure.Repositories
         {
             _context=context;
         }
-        public async Task<IEnumerable<Comment>> GetComments(Guid TaskId)
+        public async Task<IEnumerable<Comment>> GetCommentsByTask(Guid TaskId)
         {
-            return await _context.Comments.Where(C => C.TaskId == TaskId).ToListAsync();
+            return await _context.Comments.Include(c => c.User)
+                .Where(C => C.TaskId == TaskId).ToListAsync();
         }
         public async Task<Comment?> GetById(Guid CommentId)
         {

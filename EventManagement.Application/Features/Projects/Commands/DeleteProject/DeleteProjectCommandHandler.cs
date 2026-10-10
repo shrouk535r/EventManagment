@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EventManagement.Application.Features.Projects.Commands.DeleteProject
 {
@@ -28,6 +29,7 @@ namespace EventManagement.Application.Features.Projects.Commands.DeleteProject
             {
                 throw new NotFoundException(nameof(Project), request.ProjectId);
             }
+           
             _projectRepository.Delete(project);
             await _unitOfWork.Save();
             return true;

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EventManagement.Application.Features.Projects.Commands.UpdateProject
 {
@@ -29,6 +30,12 @@ namespace EventManagement.Application.Features.Projects.Commands.UpdateProject
             {
                 throw new NotFoundException(nameof(Project),request.ProjectId);
             }
+            if (!Guid.TryParse(request.userId, out var userId))
+                throw new ConflictException("id cannot convert to Guid");
+
+            if (project.UserId != userId)
+                throw new ForbiddenException("Update this Project, Owner only can update it");
+
             project.Name=request.Name;
             project.Description=request.Description;
             project.Completed = request.IsCompleted;

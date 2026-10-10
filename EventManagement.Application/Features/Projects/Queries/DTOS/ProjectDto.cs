@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 namespace EventManagement.Application.Features.Projects.Queries.DTOS
 {
     public sealed record ProjectDto(
+        Guid projectId,
         string Name,
         string Description,
         bool Completed,
         string UserName
         );
     public sealed record ProjectDetailsDto(
+        Guid projectId,
+        DateOnly CreatedAt,
+        DateOnly UpdatedAt,
         string Name,
         string Description,
         bool Completed,

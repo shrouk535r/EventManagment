@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Tasks.Commands.UpdateTaskStatus
 {
-    public sealed record UpdateTaskStatusCommand(Guid TaskId, TaskStatusEnum NewStatus):IRequest<bool>;
+    public sealed record UpdateTaskStatusCommand(Guid TaskId, TaskStatusEnum NewStatus, string userId):IRequest<bool>;
 }

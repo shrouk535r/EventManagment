@@ -16,7 +16,7 @@ namespace EventManagement.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddApiDI(builder.Configuration);
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            //builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
             using (var scope = app.Services.CreateScope())
@@ -39,7 +39,9 @@ namespace EventManagement.Api
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseRouting();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

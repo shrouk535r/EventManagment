@@ -1,4 +1,5 @@
-﻿using EventManagement.Domain.Entities.Projects;
+﻿using EventManagement.Application.Excepitions;
+using EventManagement.Domain.Entities.Projects;
 using EventManagement.Domain.Entities.Users;
 using EventManagement.Domain.Interfaces.Repositories;
 using EventManagement.Domain.Interfaces.UOW;
@@ -23,11 +24,14 @@ namespace EventManagement.Application.Features.Projects.Commands.CreateProject
         }
         public async Task<Guid> Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
+            if (!Guid.TryParse(request.UserId, out var userId))
+                throw new ConflictException("id cannot convert to Guid");
+
             var newproject = new Project
             {
                 Name = request.Name,
                 Description = request.Description,
-                UserId = request.UserId,
+                UserId = userId,
                 Completed = false,
             };
             await _projectRepository.Add(newproject);

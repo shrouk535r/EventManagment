@@ -28,6 +28,7 @@ namespace EventManagement.Application.Features.Projects.Queries.GetProjectsByUse
                 throw new NotFoundException(nameof(Project), request.userId);
             var projectsDto = projects.Select(P => new ProjectDto
            (
+               P.Id,
                P.Name,
                P.Description,
                P.Completed,

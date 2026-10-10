@@ -12,8 +12,9 @@ namespace EventManagement.Application.Features.Tasks.Commands.UpdateTaskStatus
         public UpdateTaskStatusCommandValidator()
         {
             RuleFor(T => T.TaskId).NotEmpty().WithMessage("Task Id Field is Required");
-            RuleFor(T => T.NewStatus).NotEmpty().WithMessage("Task status Field is Required");
             RuleFor(T => T.NewStatus).IsInEnum().WithMessage("Invalid Task status");
+            RuleFor(P => P.userId).NotEmpty().WithMessage("You Must Login To Update The Task");
+
 
         }
     }

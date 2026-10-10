@@ -19,12 +19,4 @@
     <ProjectReference Include="..\EventManagement.Domain\EventManagement.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Comments\Queries\GetCommentsByTaskId\" />
-    <Folder Include="Features\Tasks\Queries\GetTasksByProjectId\" />
-    <Folder Include="Features\Tasks\Queries\GetTaskById\" />
-    <Folder Include="Features\Tasks\Queries\GetTasksByUserId\" />
-    <Folder Include="Features\Tasks\Queries\GetTasks\" />
-  </ItemGroup>
-
 </Project>

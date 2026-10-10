@@ -1,4 +1,5 @@
-﻿using EventManagement.Application.Features.Projects.Queries.DTOS;
+﻿using EventManagement.Application.Excepitions;
+using EventManagement.Application.Features.Projects.Queries.DTOS;
 using EventManagement.Domain.Interfaces.Repositories;
 using MediatR;
 using System;
@@ -21,8 +22,11 @@ namespace EventManagement.Application.Features.Projects.Queries.GetProjects
         public async Task<List<ProjectDto>> Handle(GetProjectQuery request, CancellationToken cancellationToken)
         {
             var projects = await _projectRepository.GetAll();
+            if (projects == null)
+                throw new NotFoundException("There are No Projects Added Yet");
             var projectsDto =projects.Select(P => new ProjectDto 
             ( 
+                P.Id,
                 P.Name,
                 P.Description,
                 P.Completed,

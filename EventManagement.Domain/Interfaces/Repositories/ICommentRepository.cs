@@ -12,7 +12,7 @@ namespace EventManagement.Domain.Interfaces.Repositories
 {
     public interface ICommentRepository
     {
-        public Task<IEnumerable<Comment>> GetComments(Guid TaskId);
+        public Task<IEnumerable<Comment>> GetCommentsByTask(Guid TaskId);
         public Task<Comment>GetById(Guid CommentId);
         public Task Add(Comment comment);
         public void Update(Comment comment);

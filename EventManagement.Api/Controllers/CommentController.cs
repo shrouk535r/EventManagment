@@ -1,5 +1,10 @@
-﻿using MediatR;
+﻿using EventManagement.Application.Features.Comments.Commands.CreateComment;
+using EventManagement.Application.Features.Comments.Queries.GetCommentsByTaskId;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using static EventManagement.Api.Requests.Comments.CommentRequest;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,35 +15,29 @@ namespace EventManagement.Api.Controllers
     public class CommentController(IMediator mediator) : ControllerBase
     {
         // GET: api/<CommentController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("CommentsByTask/{taskId}")]
+        public async Task<IActionResult> Get(Guid taskId)
         {
-            return new string[] { "value1", "value2" };
+            var result = await mediator.Send(new GetCommentsByTaskIdQuery(taskId));
+            return Ok(result);
         }
 
-        // GET api/<CommentController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<CommentController>
+        [Authorize]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Create(CreateCommentRequest request)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await mediator.Send(new CreateCommentCommand(request.Content,request.TaskId,userId));
+            return Ok(new
+            {
+                Message = "Comment Added Successfully!",
+                Data = result
+            });
+
         }
 
-        // PUT api/<CommentController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
 
-        // DELETE api/<CommentController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

@@ -12,6 +12,7 @@ namespace EventManagement.Application.Features.Projects.Commands.DeleteProject
         public DeleteProjectCommandValidator()
         {
             RuleFor(P => P.ProjectId).NotEmpty().WithMessage("Project Id Field is required");
+
         }
     }
 }

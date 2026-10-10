@@ -25,19 +25,21 @@ namespace EventManagement.Application.Excepitions
 
     public sealed class UnauthorizedException : AppException
     {
-        public UnauthorizedException(string operation) : base($"This User Not Allowed To {operation}") { }
+        public UnauthorizedException(string message) : base(message) { }
         public override int SatusCode => 401;
     }
 
     public sealed class ForbiddenException : AppException
     {
-        public ForbiddenException(string message) : base(message) { }
+        public ForbiddenException(string operation) : base($"This User Not Allowed To {operation}") { }
         public override int SatusCode => 403;
     }
     public sealed class NotFoundException : AppException
     {
         public override int SatusCode => 404;
         public NotFoundException(string entity,Guid id ) : base($"The {entity} with this {id} Not Found") { }
+        public NotFoundException(string message) : base(message) { }
+
     }
 
 

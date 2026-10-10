@@ -1,4 +1,5 @@
 ﻿using EventManagement.Application.Excepitions;
+using EventManagement.Domain.Entities.Projects;
 using EventManagement.Domain.Entities.Tasks;
 using EventManagement.Domain.Interfaces.Repositories;
 using EventManagement.Domain.Interfaces.UOW;
@@ -29,6 +30,12 @@ namespace EventManagement.Application.Features.Tasks.Commands.UpdateTaskStatus
             {
                 throw new NotFoundException(nameof(Domain.Entities.Tasks.Task), request.TaskId);
             }
+            if (!Guid.TryParse(request.userId, out var userId))
+                throw new ConflictException("id cannot convert to Guid");
+
+            if (task.Project.UserId != userId)
+                throw new ForbiddenException("Update this Task, Owner only can update it");
+
             if (!validTransition(task.Status, request.NewStatus))
                 throw new ConflictException($"cannot convert from {task.Status} to {request.NewStatus}");
             task.Status = request.NewStatus;

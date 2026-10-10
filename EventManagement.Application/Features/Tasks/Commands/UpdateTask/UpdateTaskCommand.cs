@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace EventManagement.Application.Features.Tasks.Commands.UpdateTask
 {
-    public sealed record UpdateTaskCommand(Guid TaskId, string Title, string Description, TaskPriority TaskPriority, DateOnly DueDate)
+    public sealed record UpdateTaskCommand(Guid TaskId, string Title, string Description, TaskPriority TaskPriority, DateOnly DueDate,string userId)
         :IRequest<Guid>;
 }

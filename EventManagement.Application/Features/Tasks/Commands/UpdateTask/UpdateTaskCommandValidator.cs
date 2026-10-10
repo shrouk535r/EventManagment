@@ -15,6 +15,8 @@ namespace EventManagement.Application.Features.Tasks.Commands.UpdateTask
             RuleFor(T => T.Title).NotEmpty().WithMessage("Please Enter Title Name")
                .MaximumLength(200).WithMessage("Title Must be less than 200 character");
             RuleFor(T => T.TaskPriority).IsInEnum().WithMessage("Invalid Task priority");
+            RuleFor(P => P.userId).NotEmpty().WithMessage("You Must Login To Update The Task");
+
         }
     }
 }

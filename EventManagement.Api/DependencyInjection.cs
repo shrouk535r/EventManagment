@@ -13,10 +13,15 @@ namespace EventManagement.Api
     {
         public static IServiceCollection AddApiDI(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddApplicationDI()
+            .AddInfrastructureDI(configuration);
             var jwtSettings = configuration.GetSection("Jwt");
             services.AddProblemDetails();
             services.AddExceptionHandler<GlobalExcepitionHandler>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -31,8 +36,7 @@ namespace EventManagement.Api
                     };
                 });
             services.AddAuthorization();
-            services.AddApplicationDI()
-                .AddInfrastructureDI(configuration);
+
             services.AddSwaggerGen(options =>
             {
                 

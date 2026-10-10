@@ -9,6 +9,8 @@ namespace EventManagement.Domain.Interfaces.Repositories
 {
     public interface ITaskRepository
     {
+        public Task<IEnumerable<Domain.Entities.Tasks.Task>> GetTasks();
+        public Task<IEnumerable<Domain.Entities.Tasks.Task>> GetByUser(Guid userId);
         public Task<IEnumerable<Domain.Entities.Tasks.Task>> GetByProject(Guid ProjectId);
         public Task<Domain.Entities.Tasks.Task> GetById(Guid TaskId);
         public Task Add(Domain.Entities.Tasks.Task task);
